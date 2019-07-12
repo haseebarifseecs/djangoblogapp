@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1> Welcome to HomePage </h1>
+    {% if user.is_authenticated %}
+    <p> Welcome! {{ user.username }}</p>
+    {% else %}
+    <p> Welcome user</p>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,57 @@
+{% extends 'accounts/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %}
+    Login
+{% endblock %}
+
+{% block extend_head %}
+ <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'css/loginform.css' %}">
+{% endblock %}
+
+{% block content %}
+<h2>Modal Login Form</h2>
+
+<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+
+<div id="id01" class="modal">
+
+    <form class="modal-content animate" method="POST">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <img src="{% static 'imgs/loginavatar.png' %}" alt="Avatar" class="avatar">
+        </div>
+        {% csrf_token %}
+        <div class="container">
+        {{ form }}
+
+            <button type="submit">Login </button>
+         </div>
+        <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+
+
+
+    </form>
+</div>
+{% endblock %}
+
+{% block extend_body %}
+   <script>
+        // Get the modal
+        var modal = document.getElementById('id01');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+                if (event.target == modal) {
+            modal.style.display = "none";
+                }
+        }
+</script>
+{% endblock %}
+
